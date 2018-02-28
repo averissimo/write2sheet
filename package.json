@@ -1,16 +1,24 @@
 {
-  "name": "scrapper2sheets",
-  "version": "0.0.1",
-  "description": "Scrape le web.",
+  "name": "write2sheet",
+  "version": "1.0.0",
+  "description": "Write data to google Sheets",
   "main": "index.js",
-  "author": "André",
+  "author": "André Veríssimo",
+	"license": "GPLv3",
+	"bugs": {
+		"url": "https://github.com/averissimo/write2sheet/issues"
+	},
+	"homepage": "https://github.com/averissimo/write2sheet",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/averissimo/write2sheet"
+  },
   "scripts": {
-    "start": "node run.js",
     "test": "xo"
   },
   "dependencies": {
     "ava": "^0.25.0",
-    "crypto-market-scrapper": "averissimo/crypto-market-scrapper",
+    "crypto-market-scrapper": "github:averissimo/crypto-market-scrapper",
     "google-auth-library": "^0.12.0",
     "googleapis": "^24.0.0",
     "moment": "^2.20.1",
