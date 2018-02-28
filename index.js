@@ -28,9 +28,9 @@ class GoogleSheetWrite {
 			throw new Error('client_secret.json does not exists, please create API token.');
 		}
 		this.sheetsKey = key;
-		this.promise = new Promise((resolve) => {
+		this.promise = new Promise(resolve => {
 			const content = fs.readFileSync(path.resolve('.', 'client_secret.json'));
-			this.authorize(JSON.parse(content), auth => {
+			this.authorize(JSON.parse(content), () => {
 				console.log('Authorization successful!');
 				resolve();
 			});
