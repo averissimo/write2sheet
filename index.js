@@ -27,6 +27,9 @@ class GoogleSheetWrite {
 			throw new Error('client_secret.json does not exists, please create API token.');
 		}
 		this.sheetsKey = key;
+		fs.readFile('client_secret.json', () => {
+			console.log('Authorization successful!');
+		});
 	}
 
 	/**
