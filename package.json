@@ -18,7 +18,6 @@
   },
   "dependencies": {
     "ava": "^0.25.0",
-    "crypto-market-scrapper": "^1.0.0",
     "google-auth-library": "^0.12.0",
     "googleapis": "^24.0.0",
     "moment": "^2.20.1",
