@@ -3,6 +3,7 @@ const fs = require('fs');
 const readline = require('readline');
 const google = require('googleapis');
 const GoogleAuth = require('google-auth-library');
+const Promise = require('promise');
 
 /**
  * Class that contains methods to write to google sheetsKey
@@ -27,8 +28,11 @@ class GoogleSheetWrite {
 			throw new Error('client_secret.json does not exists, please create API token.');
 		}
 		this.sheetsKey = key;
-		fs.readFile('client_secret.json', () => {
-			console.log('Authorization successful!');
+
+		fs.readFile('client_secret.json', (content) => {
+			this.authorize(JSON.parse(content), auth => {
+				console.log('Authorization successful!');
+			});
 		});
 	}
 
