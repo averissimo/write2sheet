@@ -30,7 +30,6 @@ class GoogleSheetWrite {
 		this.sheetsKey = key;
 		this.promise = new Promise((resolve) => {
 			const content = fs.readFileSync(path.resolve('.', 'client_secret.json'));
-			console.log(content);
 			this.authorize(JSON.parse(content), auth => {
 				console.log('Authorization successful!');
 				resolve();
@@ -47,15 +46,17 @@ class GoogleSheetWrite {
 	 */
 	write(values, range) {
 		// Load client secrets from a local file.
-		fs.readFile('client_secret.json', (err, content) => {
-			if (err) {
-				console.log('Error loading client secret file: ' + err);
-				return;
-			}
-			// Authorize a client with the loaded credentials, then call the
-			// Google Sheets API.
-			this.authorize(JSON.parse(content), auth => {
-				return this.updateSheet(auth, values, range);
+		this.promise.then(() => {
+			fs.readFile('client_secret.json', (err, content) => {
+				if (err) {
+					console.log('Error loading client secret file: ' + err);
+					return;
+				}
+				// Authorize a client with the loaded credentials, then call the
+				// Google Sheets API.
+				this.authorize(JSON.parse(content), auth => {
+					return this.updateSheet(auth, values, range);
+				});
 			});
 		});
 	}
