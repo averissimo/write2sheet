@@ -1,8 +1,9 @@
 const path = require('path');
 const fs = require('fs');
 const readline = require('readline');
-const google = require('googleapis');
-const GoogleAuth = require('google-auth-library');
+const {google} = require('googleapis');
+const {GoogleAuth, OAuth2Client} = require('google-auth-library');
+
 const Promise = require('promise');
 
 /**
@@ -23,7 +24,6 @@ class GoogleSheetWrite {
 			process.env.USERPROFILE) + '/.credentials/';
 		this.TOKEN_PATH = this.TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json';
 		this.SECRET_PATH = path.join('.', 'client_secret.json');
-
 		if (!fs.existsSync(this.SECRET_PATH)) {
 			throw new Error('client_secret.json does not exists, please create API token.');
 		}
@@ -34,7 +34,9 @@ class GoogleSheetWrite {
 				console.log('Authorization successful!');
 				resolve();
 			});
-		});
+		}, reject => {
+      console.log('Promise rejected!')
+    });
 	}
 
 	/**
@@ -68,17 +70,16 @@ class GoogleSheetWrite {
 	 * @param  {[type]} range  range where to write
 	 */
 	updateSheet(auth, values, range) {
-		const sheets = google.sheets('v4');
+		const sheets = google.sheets({version: 'v4', auth});
 		// Write to sheet
 		const request = {
 			auth,
 			spreadsheetId: this.sheetsKey,
 			valueInputOption: 'USER_ENTERED',
-			resource: {
-				range,
-				values
-			},
-			range
+			range: range,
+      resource: {
+        values
+      }
 		};
 		sheets.spreadsheets.values.update(request, (err, response) => {
 			if (err) {
@@ -101,7 +102,7 @@ class GoogleSheetWrite {
 		const clientId = credentials.installed.client_id;
 		const redirectUrl = credentials.installed.redirect_uris[0];
 		const auth = new GoogleAuth();
-		const oauth2Client = new auth.OAuth2(clientId, clientSecret, redirectUrl);
+		const oauth2Client = new OAuth2Client(clientId, clientSecret, redirectUrl);
 
 		// Check if we have previously stored a token.
 		fs.readFile(this.TOKEN_PATH, (err, token) => {
