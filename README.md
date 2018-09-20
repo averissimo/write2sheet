@@ -1,5 +1,7 @@
 # write2sheet
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/averissimo/write2sheet.svg)](https://greenkeeper.io/)
+
 > Simple Node.js library to write to Google Sheets
 
 Super simple library that writes data into a Google Sheet
