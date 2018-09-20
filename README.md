@@ -6,13 +6,6 @@
 
 Super simple library that writes data into a Google Sheet
 
-*Consider donating if this library has helped*
-
-- ETH: 0xd6692892ab173fea765b09cb7adc105d6a5337d0
-- LTC: LKmUFmAjUkmVLieJydrtiBeAAuUZi9A3CB
-- Nano: xrb_1m9eh9ojnh4fp35p49pim1ohmwjzt74ctiucdnyydwf3whkm8ur66jroc6da
-- GRLC: GW4EB6nLbx8B4TGD6nZLUXSWN92am2S5PN
-
 ## Requirements
 
 - Node.js *(v8 or up)*
@@ -66,6 +59,15 @@ currencies.then(response => {
 	sheet.write(values, 'Currencies!B9:D');
 });
 ```
+
+## Donating
+
+*Consider donating if this library has helped*
+
+- ETH: 0xd6692892ab173fea765b09cb7adc105d6a5337d0
+- LTC: LKmUFmAjUkmVLieJydrtiBeAAuUZi9A3CB
+- Nano: xrb_1m9eh9ojnh4fp35p49pim1ohmwjzt74ctiucdnyydwf3whkm8ur66jroc6da
+- GRLC: GW4EB6nLbx8B4TGD6nZLUXSWN92am2S5PN
 
 ## License
 

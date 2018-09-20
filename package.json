@@ -1,15 +1,15 @@
 {
   "name": "write2sheet",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "Write data to google Sheets",
   "main": "index.js",
   "author": "André Veríssimo",
-	"license": "GPLv3",
-	"bugs": {
-		"url": "https://github.com/averissimo/write2sheet/issues"
-	},
-	"homepage": "https://github.com/averissimo/write2sheet",
-	"repository": {
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/averissimo/write2sheet/issues"
+  },
+  "homepage": "https://github.com/averissimo/write2sheet",
+  "repository": {
     "type": "git",
     "url": "https://github.com/averissimo/write2sheet"
   },
@@ -18,10 +18,11 @@
   },
   "dependencies": {
     "ava": "^0.25.0",
-    "crypto-market-scrapper": "github:averissimo/crypto-market-scrapper",
+    "crypto-market-scrapper": "^1.1.2",
     "google-auth-library": "^1.3.1",
-    "googleapis": "^26.0.1",
-    "moment": "^2.20.1",
+    "googleapis": "^27.0.0",
+    "moment": "^2.22.2",
+    "promise": "^8.0.2",
     "readline": "^1.3.0",
     "xo": "^0.20.3"
   }
