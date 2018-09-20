@@ -1,6 +1,6 @@
 {
   "name": "write2sheet",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Write data to google Sheets",
   "main": "index.js",
   "author": "André Veríssimo",
