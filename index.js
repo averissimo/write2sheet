@@ -48,16 +48,20 @@ class GoogleSheetWrite {
 	 */
 	write(values, range) {
 		// Load client secrets from a local file.
-		this.promise.then(() => {
-			fs.readFile('client_secret.json', (err, content) => {
-				if (err) {
-					console.log('Error loading client secret file: ' + err);
-					return;
-				}
-				// Authorize a client with the loaded credentials, then call the
-				// Google Sheets API.
-				this.authorize(JSON.parse(content), auth => {
-					return this.updateSheet(auth, values, range);
+		return new Promise((resolve, reject) => {
+			this.promise.then(() => {
+				fs.readFile('client_secret.json', (err, content) => {
+					if (err) {
+						console.log('Error loading client secret file: ' + err);
+						return;
+					}
+					// Authorize a client with the loaded credentials, then call the
+					// Google Sheets API.
+					this.authorize(JSON.parse(content), auth => {
+						return this.updateSheet(auth, values, range)
+							.then((response) => resolve(response))
+							.catch((err) => reject(err));
+					});
 				});
 			});
 		});
@@ -81,12 +85,14 @@ class GoogleSheetWrite {
         values
       }
 		};
-		sheets.spreadsheets.values.update(request, (err, response) => {
-			if (err) {
-				console.error(err);
-			} else {
-				console.log('INFO:: Finished writing to: ' + range + ' (response: ' + response + ')');
-			}
+		return new Promise((resolve, reject) => {
+			sheets.spreadsheets.values.update(request, (err, response) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve('INFO:: Finished writing to: ' + range)
+				}
+			});
 		});
 	}
 
