@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
-const {GoogleAuth, OAuth2Client} = require('google-auth-library');
+const {OAuth2Client} = require('google-auth-library');
 
 const Promise = require('promise');
 
@@ -16,7 +16,6 @@ class GoogleSheetWrite {
 	/**
 	 * [constructor description]
 	 * @param  {[type]} key String from  https://docs.google.com/spreadsheets/d/<very long key to use in constuctor>/edit
-	 * @return {[type]}     new GoogleSheetWrite instance
 	 */
 	constructor(key) {
 		this.SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
@@ -34,17 +33,16 @@ class GoogleSheetWrite {
 				console.log('Authorization successful!');
 				resolve();
 			});
-		}, reject => {
-      console.log('Promise rejected!')
-    });
+		});
 	}
 
 	/**
 	 * Get authorization and call the method that updates the sheet.
 	 *
 	 * Note: it does not verify if data size is same or compatible as range.
-	 * @param  {[type]} values Data to be written to range
-	 * @param  {[type]} range  Range in sheet, ex: C1:D
+	 * @param  {[any]} values Data to be written to range
+	 * @param  {String} range  Range in sheet, ex: C1:D
+	 * @return {Promise} a Promise that solves when data is written
 	 */
 	write(values, range) {
 		// Load client secrets from a local file.
@@ -59,8 +57,8 @@ class GoogleSheetWrite {
 					// Google Sheets API.
 					this.authorize(JSON.parse(content), auth => {
 						return this.updateSheet(auth, values, range)
-							.then((response) => resolve(response))
-							.catch((err) => reject(err));
+							.then(response => resolve(response))
+							.catch(error => reject(error));
 					});
 				});
 			});
@@ -72,6 +70,7 @@ class GoogleSheetWrite {
 	 * @param  {[type]} auth   authorization
 	 * @param  {[type]} values data to be written
 	 * @param  {[type]} range  range where to write
+	 * @return {[Promise]} a Promise that solves when data is written
 	 */
 	updateSheet(auth, values, range) {
 		const sheets = google.sheets({version: 'v4', auth});
@@ -80,17 +79,17 @@ class GoogleSheetWrite {
 			auth,
 			spreadsheetId: this.sheetsKey,
 			valueInputOption: 'USER_ENTERED',
-			range: range,
-      resource: {
-        values
-      }
+			range,
+			resource: {
+				values
+			}
 		};
 		return new Promise((resolve, reject) => {
-			sheets.spreadsheets.values.update(request, (err, response) => {
+			sheets.spreadsheets.values.update(request, err => {
 				if (err) {
 					reject(err);
 				} else {
-					resolve('INFO:: Finished writing to: ' + range)
+					resolve('INFO:: Finished writing to: ' + range);
 				}
 			});
 		});
@@ -107,7 +106,6 @@ class GoogleSheetWrite {
 		const clientSecret = credentials.installed.client_secret;
 		const clientId = credentials.installed.client_id;
 		const redirectUrl = credentials.installed.redirect_uris[0];
-		const auth = new GoogleAuth();
 		const oauth2Client = new OAuth2Client(clientId, clientSecret, redirectUrl);
 
 		// Check if we have previously stored a token.
@@ -161,9 +159,9 @@ class GoogleSheetWrite {
 	storeToken(token) {
 		try {
 			fs.mkdirSync(this.TOKEN_DIR);
-		} catch (err) {
-			if (err.code !== 'EEXIST') {
-				throw err;
+		} catch (error) {
+			if (error.code !== 'EEXIST') {
+				throw error;
 			}
 		}
 		fs.writeFile(this.TOKEN_PATH, JSON.stringify(token));
