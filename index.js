@@ -37,6 +37,33 @@ class GoogleSheetWrite {
 	}
 
 	/**
+	 * Get authorization and call the method that reads the sheet.
+	 *
+	 * @param  {String} range  Range in sheet, ex: C1:D
+	 * @return {Promise} a Promise that solves when data is written
+	 */
+	read(range) {
+		// Load client secrets from a local file.
+		return new Promise((resolve, reject) => {
+			this.promise.then(() => {
+				fs.readFile('client_secret.json', (err, content) => {
+					if (err) {
+						console.log('Error loading client secret file: ' + err);
+						return;
+					}
+					// Authorize a client with the loaded credentials, then call the
+					// Google Sheets API.
+					this.authorize(JSON.parse(content), auth => {
+						return this.readSheet(auth, range)
+							.then(response => resolve(response))
+							.catch(error => reject(error));
+					});
+				});
+			});
+		});
+	}
+
+	/**
 	 * Get authorization and call the method that updates the sheet.
 	 *
 	 * Note: it does not verify if data size is same or compatible as range.
@@ -61,6 +88,31 @@ class GoogleSheetWrite {
 							.catch(error => reject(error));
 					});
 				});
+			});
+		});
+	}
+
+	/**
+	 * Updates the sheet with the new data
+	 * @param  {[type]} auth   authorization
+	 * @param  {[type]} range  range where to write
+	 * @return {[Promise]} a Promise that solves when data is written
+	 */
+	readSheet(auth, range) {
+		const sheets = google.sheets({version: 'v4', auth});
+		// Write to sheet
+		const request = {
+			auth,
+			spreadsheetId: this.sheetsKey,
+			range
+		};
+		return new Promise((resolve, reject) => {
+			sheets.spreadsheets.values.get(request, (err, response) => {
+				if (err) {
+					reject(err);
+				} else {
+					resolve(response.data.values);
+				}
 			});
 		});
 	}
