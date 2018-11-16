@@ -1,13 +1,12 @@
-const chai = require('chai');
+/* eslint indent: ["error", 2] */
 const assert = require('assert');
+const chai = require('chai');
 const moment = require('moment');
 const {describe, it} = require('mocha');
-const fs = require('fs');
-const zlib = require('zlib');
-const GoogleSheetWrite = require('../');
+const {expect} = require('chai');
+const GoogleSheetWrite = require('..');
 
-const expect = chai.expect
-chai.use(require('chai-as-promised'))
+chai.use(require('chai-as-promised'));
 
 console.log('#################################################################################');
 console.log('#                                                                               #');
@@ -24,8 +23,8 @@ const testStr = 'Test successful! ' + moment().format();
 
 describe('write/read', () => {
   it('should fail for an invalid sheet', async () => {
-    await expect(sheet
-      .write([['Test successful! ' + moment().format()]], 'Sheet21!A1:A1')).to.be.rejectedWith(/^Unable to parse range: Sheet21!A1:A1$/);
+    await expect(sheet.write([['Test successful! ' + moment().format()]], 'Sheet21!A1:A1'))
+      .to.be.rejectedWith(/^Unable to parse range: Sheet21!A1:A1$/);
   });
 
   it('should write and read the new string', async () => {
@@ -37,5 +36,4 @@ describe('write/read', () => {
     assert.ok(readResult[0][0] !== undefined);
     assert.strictEqual(readResult[0][0], testStr);
   });
-
 });
