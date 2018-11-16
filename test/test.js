@@ -25,7 +25,7 @@ describe('write/read', () => {
   it('should fail for an invalid sheet', async () => {
     await expect(sheet.write([['Test successful! ' + moment().format()]], 'Sheet21!A1:A1'))
       .to.be.rejectedWith(/^Unable to parse range: Sheet21!A1:A1$/);
-  }).timeout(15000);
+  }).timeout(60000);
 
   it('should write and read the new string', async () => {
     const writeResult = await sheet.write([[testStr]], 'Sheet1!A1:A1');
@@ -35,5 +35,5 @@ describe('write/read', () => {
     assert.ok(readResult[0] !== undefined);
     assert.ok(readResult[0][0] !== undefined);
     assert.strictEqual(readResult[0][0], testStr);
-  }).timeout(15000);
+  }).timeout(60000);
 });
