@@ -6,6 +6,6 @@ node_js:
 before_script:
   - bash -c "if [ -f client_secret.json ]; then echo 'client_secret exists.'; else echo ${GOOGLE_API} > client_secret.json; fi"
   - bash -c "echo "" >> client_secret.json"
-  - mkdir -p ${CREDENTIALS_PATH}
+  - mkdir -p ${HOME}/.credentials
   - bash -c "if [ -f ${CREDENTIALS_PATH} ]; then echo 'credentials path exists.'; else echo ${GOOGLE_CREDENTIALS} > ${CREDENTIALS_PATH}; fi"
   - bash -c "echo "" >> ${CREDENTIALS_PATH}"
