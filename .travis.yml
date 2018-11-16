@@ -3,5 +3,5 @@ language: node_js
 node_js:
   - '10'
 
-before:
+before_script:
   - if [ -f client_secret ]; then; echo "client_secret exists."; else; echo ${GOOGLE_API} >> client_secret.json; fi
