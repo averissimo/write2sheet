@@ -21,7 +21,7 @@
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "google-auth-library": "^2.0.1",
-    "googleapis": "^34.0.0",
+    "googleapis": "^36.0.0",
     "mocha": "^5.2.0",
     "moment": "^2.22.2",
     "promise": "^8.0.2",
