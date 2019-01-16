@@ -20,7 +20,7 @@
     "ava": "^0.25.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "google-auth-library": "^2.0.1",
+    "google-auth-library": "^3.0.0",
     "googleapis": "^36.0.0",
     "mocha": "^5.2.0",
     "moment": "^2.22.2",
