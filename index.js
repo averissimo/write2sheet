@@ -26,6 +26,7 @@ class GoogleSheetWrite {
 		if (!fs.existsSync(this.SECRET_PATH)) {
 			throw new Error('client_secret.json does not exists, please create API token.');
 		}
+
 		this.sheetsKey = key;
 		this.promise = new Promise(resolve => {
 			const content = fs.readFileSync(path.resolve('.', 'client_secret.json'));
@@ -51,6 +52,7 @@ class GoogleSheetWrite {
 						console.log('Error loading client secret file: ' + err);
 						return;
 					}
+
 					// Authorize a client with the loaded credentials, then call the
 					// Google Sheets API.
 					this.authorize(JSON.parse(content), auth => {
@@ -80,6 +82,7 @@ class GoogleSheetWrite {
 						console.log('Error loading client secret file: ' + err);
 						return;
 					}
+
 					// Authorize a client with the loaded credentials, then call the
 					// Google Sheets API.
 					this.authorize(JSON.parse(content), auth => {
@@ -184,7 +187,8 @@ class GoogleSheetWrite {
 			access_type: 'offline', // eslint-disable-line camelcase
 			scope: this.SCOPES
 		});
-		console.log('Authorize this app by visiting this url: ', authUrl);
+
+		console.log('Authorize this app by visiting this url:', authUrl);
 		const rl = readline.createInterface({
 			input: process.stdin,
 			output: process.stdout
@@ -196,6 +200,7 @@ class GoogleSheetWrite {
 					console.log('Error while trying to retrieve access token', err);
 					return;
 				}
+
 				oauth2Client.credentials = token;
 				this.storeToken(token);
 				callback(oauth2Client);
@@ -216,6 +221,7 @@ class GoogleSheetWrite {
 				throw error;
 			}
 		}
+
 		fs.writeFile(this.TOKEN_PATH, JSON.stringify(token));
 		console.log('Token stored to ' + this.TOKEN_PATH);
 	}
