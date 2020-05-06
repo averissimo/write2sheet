@@ -4,7 +4,7 @@
   "description": "Write data to google Sheets",
   "main": "index.js",
   "author": "André Veríssimo",
-  "license": "GPLv3",
+  "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/averissimo/write2sheet/issues"
   },
