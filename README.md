@@ -1,7 +1,7 @@
 # write2sheet
 
 [![Build Status](https://travis-ci.org/averissimo/write2sheet.svg?branch=master)](https://travis-ci.org/averissimo/write2sheet)
-[![Greenkeeper badge](https://badges.greenkeeper.io/averissimo/write2sheet.svg)](https://greenkeeper.io/)
+
 
 > Simple Node.js library to write to Google Sheets
 
