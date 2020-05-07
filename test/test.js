@@ -19,7 +19,7 @@ console.log('#                                                                  
 console.log('#################################################################################');
 
 const sheet = new GoogleSheetWrite('1zCLdrovpsRAGGWYF4rHcBOD9Tl3_woc0BgDXjoCd9c0');
-const testStr = 'Test successful! ' + moment().format();
+const testString = 'Test successful! ' + moment().format();
 
 describe('write/read', () => {
   it('should fail for an invalid sheet', async () => {
@@ -28,12 +28,12 @@ describe('write/read', () => {
   }).timeout(20000);
 
   it('should write and read the new string', async () => {
-    const writeResult = await sheet.write([[testStr]], 'Sheet1!A1:A1');
+    const writeResult = await sheet.write([[testString]], 'Sheet1!A1:A1');
     assert.strictEqual(writeResult, 'INFO:: Finished writing to: Sheet1!A1:A1');
     const readResult = await sheet.read('Sheet1!A1:A1');
     assert.ok(readResult !== undefined);
     assert.ok(readResult[0] !== undefined);
     assert.ok(readResult[0][0] !== undefined);
-    assert.strictEqual(readResult[0][0], testStr);
+    assert.strictEqual(readResult[0][0], testString);
   }).timeout(20000);
 });
