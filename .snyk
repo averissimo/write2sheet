@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.15.0
+version: v1.16.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -14,3 +14,29 @@ patch:
         patched: '2020-05-07T14:03:00.007Z'
     - ava > concordance > lodash:
         patched: '2020-06-19T13:35:58.349Z'
+    - ava > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - ava > concordance > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - mocha > yargs-unparser > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > eslint > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > eslint-import-resolver-webpack > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > eslint-plugin-unicorn > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > @typescript-eslint/parser > @typescript-eslint/typescript-estree > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > eslint > inquirer > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > eslint > table > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > eslint-plugin-ava > enhance-visitors > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > @typescript-eslint/eslint-plugin > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
+    - xo > @typescript-eslint/parser > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash:
+        patched: '2020-06-30T11:57:19.827Z'
