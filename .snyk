@@ -40,3 +40,45 @@ patch:
         patched: '2020-06-30T11:57:19.827Z'
     - xo > @typescript-eslint/parser > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash:
         patched: '2020-06-30T11:57:19.827Z'
+    - ava > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - ava > concordance > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - mocha > yargs-unparser > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-import-resolver-webpack > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > @typescript-eslint/parser > @typescript-eslint/typescript-estree > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint > table > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-ava > enhance-visitors > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > @typescript-eslint/eslint-plugin > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > @typescript-eslint/parser > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/types > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/traverse > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/traverse > @babel/types > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/traverse > @babel/generator > @babel/types > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/traverse > @babel/helper-function-name > @babel/types > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
+    - xo > eslint-plugin-unicorn > eslint-template-visitor > babel-eslint > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash:
+        patched: '2020-07-08T15:24:08.149Z'
