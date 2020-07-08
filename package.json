@@ -14,9 +14,7 @@
     "url": "https://github.com/averissimo/write2sheet"
   },
   "scripts": {
-    "test": "xo && mocha",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "test": "xo && mocha"
   },
   "dependencies": {
     "ava": "^3.10.0",
@@ -28,8 +26,6 @@
     "moment": "^2.27.0",
     "promise": "^8.0.3",
     "readline": "^1.3.0",
-    "snyk": "^1.360.0",
-    "xo": "^0.32.0"
-  },
-  "snyk": true
+    "xo": "^0.32.1"
+  }
 }
