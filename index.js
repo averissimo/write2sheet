@@ -24,7 +24,7 @@ class GoogleSheetWrite {
 		this.TOKEN_PATH = this.TOKEN_DIR + 'sheets.googleapis.com-nodejs-quickstart.json';
 		this.SECRET_PATH = path.join('.', 'client_secret.json');
 		if (!fs.existsSync(this.SECRET_PATH)) {
-			throw new Error('client_secret.json does not exists, please create API token on https://developers.google.com/sheets/api/guides/authorizing (see \'Authorizing requests with OAuth 2.0\').');
+			throw new Error('credentials.json does not exists, please create a desktop API token on https://developers.google.com/sheets/api/quickstart/nodejs (see \'Authorizing requests with OAuth 2.0\').');
 		}
 
 		this.sheetsKey = key;
@@ -222,7 +222,7 @@ class GoogleSheetWrite {
 			}
 		}
 
-		fs.writeFile(this.TOKEN_PATH, JSON.stringify(token));
+		fs.writeFileSync(this.TOKEN_PATH, JSON.stringify(token));
 		console.log('Token stored to ' + this.TOKEN_PATH);
 	}
 }
