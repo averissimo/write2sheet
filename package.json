@@ -17,7 +17,7 @@
     "test": "xo && mocha"
   },
   "dependencies": {
-    "ava": "^3.11.1 ",
+    "ava": "^6.0.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "google-auth-library": "^5.9.2",
